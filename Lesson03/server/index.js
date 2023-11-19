@@ -2,6 +2,7 @@ const express = require('express')
 require('dotenv').config()
 const apiV1Router = require('./routes/index')
 // const cors = require('cors')
+// const errMdw = require('./middlewares/error.mdw')
 const app = express()
 
 // app.use(cors())

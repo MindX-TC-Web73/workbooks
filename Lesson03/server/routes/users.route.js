@@ -1,11 +1,11 @@
 const express = require('express');
 const usersData = require('./../mock/users.mock')
 const router = express.Router();
+const authMdw = require('../middlewares/auth.mdw');
 
 router.get('/all', (req, res) => {
     return res.json({msg: 'sucess', data: usersData})
 })
-
 router.get('/search', (req, res) => {
     const {query} = req;
     const findData = usersData.filter(
@@ -14,6 +14,9 @@ router.get('/search', (req, res) => {
     )
     return res.json({msg: 'sucess', data: findData})
 })
+
+
+router.use(authMdw)
 
 router.post('/create', (req, res) => {  
     console.log(req.body) // req.prams | req.query
